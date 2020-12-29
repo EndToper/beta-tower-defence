@@ -14,7 +14,7 @@ some_BLUE = (0,255,255)
 width, height = pygame.display.Info().current_w, pygame.display.Info().current_h
 WIDTH, HEIGHT = width, height
 width, height = round(width/2), round(height/2)
-print(width, height)
+#print(width, height)
 screen = pygame.display.set_mode((width, height))
 line_width = round(width / 100)
 FPS = 60
@@ -38,7 +38,7 @@ buy_size = 50
 ar1 = pygame.image.load("strategy/arrow.png").convert_alpha()
 ar1_size = 50
 prop = 0
-print(base)
+#print(base)
 clock = pygame.time.Clock()
 c = 5
 go = False
@@ -345,7 +345,7 @@ def game_reload():
 
 
 
-print(base_trans)
+#print(base_trans)
 def draw_map():
     #1 road
     pygame.draw.line(screen, some_BLUE, [0+line_width, line_width/2], [width, line_width/2], line_width)
@@ -400,7 +400,7 @@ while run:
             all_evil.remove(enemy)
         if enemy.health <= 0:
             money+=3
-            print(f"die, {10 * mnosh}")
+            #print(f"die, {10 * mnosh}")
             all_evil.remove(enemy)
 
     if go == True and time.time() - t >= 2 and c2 != c:
