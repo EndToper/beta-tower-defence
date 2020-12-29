@@ -183,13 +183,13 @@ class Enemy(pygame.sprite.Sprite):
     def update(self):
         self.rect.x = self.x
         self.rect.y = self.y
-        if self.max_health == 15:
-            self.color = (255,255,0)
-        if self.max_health == 20:
-            self.color = (0,0,255)
         if self.max_health == 25:
+            self.color = (255,255,0)
+        if self.max_health == 40:
+            self.color = (0,0,255)
+        if self.max_health == 100:
             self.color = (125,0,125)
-        if self.max_health == 30:
+        if self.max_health == 150:
             self.color = (255,0,0)
         for arrow in arrows:
             if self.rect.colliderect(arrow.rect):
@@ -319,14 +319,16 @@ def generator():
     sp = 1
     h = 0
     while h <= 0:
-        h = r.choice((10,15,20,25,30))
+        h = r.choice((10,25,40,100,150))
         if h > 10 and press_f < 11:
             h = 0
-        if h > 15 and press_f < 26:
+        if h > 25 and press_f < 26:
             h = 0
-    if h == 15:
+        if h > 40 and press_f < 50:
+            h = 0
+    if h == 25:
         sp = 3
-    if h >= 25:
+    if h >= 100:
         sp = 0.4
     m_h = h
     enemy = Enemy(width, r.choice((line_width*21,line_width,line_width*41)), h, sp,m_h)
@@ -379,12 +381,12 @@ while run:
     draw_map()
     home.show()
     if press_f % 10 == 0:
-        mnosh = 1 + press_f//100
+        mnosh = 1 + press_f//10
     if home.base_health <= 0:
         game_run = False
     for tower in all_towers:
         tower.draw()
-        if tower.type =='archer' and time.time() - tower.time >= 1.25 - tower.lvl/4:
+        if tower.type =='archer' and time.time() - tower.time >= 1.5 - tower.lvl/4:
             tower.update()
     for arrow in arrows:
         if all_evil != []:
