@@ -326,7 +326,7 @@ def generator():
             h = 0
     if h == 15:
         sp = 3
-    if h >= 20:
+    if h >= 25:
         sp = 0.4
     m_h = h
     enemy = Enemy(width, r.choice((line_width*21,line_width,line_width*41)), h, sp,m_h)
